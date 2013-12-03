@@ -50,6 +50,14 @@ class StackTest extends \PHPUnit_Framework_TestCase
 					array(50, 100),
 					array(100, 0)
 				)
+			),
+			array(
+    			'/0,100L50,0,100,100/', 
+    			array(
+					array(0, 0),
+					array(100, 300),
+					array(200, 0)
+				)
 			)
     	);
     }
