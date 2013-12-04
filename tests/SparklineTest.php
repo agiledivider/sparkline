@@ -121,6 +121,59 @@ class StackTest extends \PHPUnit_Framework_TestCase
 		$sparkline->addSpark('line', array('test'), array('class' => 'blueline'));
 		$this->assertEquals(1, preg_match('/<path[^>]*class="blueline"/', $sparkline->render()));
     }
+
+    /**
+	 * @dataProvider percentShiftGraphs
+	 */
+    public function testPercentShiftChart($patterns, $values, $width, $height)
+    {
+        $sparkline = new Sparkline($width, $height);
+		$sparkline->addDataSet($values, 'test');
+
+		$sparkline->addSpark('percentShift', array('test'));
+		foreach ($patterns as $pattern) {
+			$this->assertEquals(1, preg_match($pattern, $sparkline->render()));
+		}
+    }
+
+    public function percentShiftGraphs()
+    {
+    	return array(
+    		array(
+    			array(
+    				'/class="above"[^>]*0,50L0,50,100,50,100,50/', 
+    				'/class="below"[^>]*0,50L0,100,100,100,100,50/'
+    			),
+    			array(array(0, 100),array(100, 100)),
+				100,100
+			),
+			array(
+    			array(
+    				'/class="above"[^>]*0,50L0,0,100,0,100,50/', 
+    				'/class="below"[^>]*0,50L0,50,100,50,100,50/'
+    			),
+    			array(array(0, 0),array(100, 0)),
+				100,100
+			),
+			array(
+    			array(
+    				'/class="above"[^>]*0,50L0,25,100,25,100,50/', 
+    				'/class="below"[^>]*0,50L0,75,100,75,100,50/'
+    			),
+    			array(array(0, 50),array(100, 50)),
+				100,100
+			),
+			array(
+    			array(
+    				'/class="above"[^>]*0,50L0,25,200,25,200,50/', 
+    				'/class="below"[^>]*0,50L0,75,200,75,200,50/'
+    			),
+    			array(array(0, 50),array(100, 50)),
+				200,100
+			)
+
+    	);
+    }
 }
 
 

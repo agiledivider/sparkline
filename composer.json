@@ -1,4 +1,26 @@
 {
+    "name": "cogitatio/sparkline",
+    "type": "library",
+    "description": "Generating sparkline SVGs",
+    "keywords": ["sparkline","svg"],
+    "homepage": "http://github.com/cogitatio/sparkline",
+    "license": "GPL2",
+    "authors": [
+        {
+            "name": "Falk Kühnel",
+            "email": "fk@cogitatio.de",
+            "homepage": "http://cogitatio.de",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "Cogitatio": "src"
+        }
+    },
 	"require-dev": {
     	"satooshi/php-coveralls": "dev-master"
     }
