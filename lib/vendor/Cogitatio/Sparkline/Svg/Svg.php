@@ -4,12 +4,14 @@ class Svg {
 
 	private $_width;
 	private $_height;
+	private $_options = array();
 	private $_children = array();
 
-	function __construct($width, $height)
+	function __construct($width, $height, $options = array())
 	{
 		$this->_width = (int) $width;
 		$this->_height = (int) $height;
+		$this->_options = $options;
 	}
 
 	function add($item)
@@ -31,6 +33,11 @@ class Svg {
 .above { fill: #00aa00; stroke: none;}
 .below { fill: #ff0000; stroke: none;}
 </style>';
+		if (!isset($this->_options['inlineStyle'])) {
+			$inlineStyle = '';
+		} elseif ($this->_options['inlineStyle'] !== true) {
+			$inlineStyle = sprintf('<style>%s</style>', $this->_options['inlineStyle']);
+		}
 		$components = '';
 		foreach ($this->_children as $child) 
 		{
