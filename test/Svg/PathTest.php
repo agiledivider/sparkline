@@ -1,9 +1,4 @@
 <?php
-spl_autoload_register(function ($class) {
-	$file = 'lib/vendor/' . str_replace('\\','/',$class) . '.php';
-	if (file_exists($file))
-    include $file;
-});
 use Cogitatio\Sparkline\Svg\Path;
 
 /**
@@ -11,8 +6,8 @@ use Cogitatio\Sparkline\Svg\Path;
  */
 class SvgPathTest extends \PHPUnit_Framework_TestCase
 {
-    /*
-     * @pathProvider
+    /**
+     * @dataProvider pathProvider
      */
     public function testSimplePath($data, $expected, $options = null)
     {
@@ -23,7 +18,7 @@ class SvgPathTest extends \PHPUnit_Framework_TestCase
         );
     }
 
-    public function pathProvider ()
+    public function pathProvider()
     {
         return array(
             array(
