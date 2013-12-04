@@ -112,6 +112,15 @@ class StackTest extends \PHPUnit_Framework_TestCase
 
 		$sparkline->addSpark('notAvailableChartType', array('test'));
     }
+
+    public function testSimpleLineWithOptions()
+    {
+        $sparkline = new Sparkline(100, 100);
+		$sparkline->addDataSet(array(array(0,0), array(100,100)), 'test');
+
+		$sparkline->addSpark('line', array('test'), array('class' => 'blueline'));
+		$this->assertEquals(1, preg_match('/<path[^>]*class="blueline"/', $sparkline->render()));
+    }
 }
 
 
