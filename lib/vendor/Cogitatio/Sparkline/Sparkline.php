@@ -43,7 +43,7 @@ class Sparkline
 				$this->_addPercentShift($dataSets[0], $options);
 				break;
 			default:
-				throw new \Exception('Shit, ' . $type . ' is not a valid Sparkline type.');
+				throw new \InvalidArgumentException('Opps, ' . $type . ' is not a valid Sparkline type.');
 		}
 	}
 
