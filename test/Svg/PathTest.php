@@ -2,7 +2,7 @@
 use Cogitatio\Sparkline\Svg\Path;
 
 /**
- * @covers Cogitatio\Sparkline\Sparkline
+ * @covers Cogitatio\Sparkline\Svg\Path
  */
 class SvgPathTest extends \PHPUnit_Framework_TestCase
 {
