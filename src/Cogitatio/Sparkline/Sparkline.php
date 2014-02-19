@@ -89,8 +89,8 @@ class Sparkline
 		for($i = 0; $i < count($dataSet); $i++)
 		{
 			array_push($normalizedDataSet, array(
-				($dataSet[$i][0] - $this->_dataBoundries['x']['min']) / $xRatio,
-				($dataSet[$i][1] - $this->_dataBoundries['y']['min']) / $yRatio
+				$xRatio == 0 ? 0 : ($dataSet[$i][0] - $this->_dataBoundries['x']['min']) / $xRatio,
+				$yRatio == 0 ? 0 : ($dataSet[$i][1] - $this->_dataBoundries['y']['min']) / $yRatio
 			));
 		}
 		return $normalizedDataSet;
